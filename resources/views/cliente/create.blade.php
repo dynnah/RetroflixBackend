@@ -20,7 +20,7 @@
     <form method="post" action="{{ route('cliente.store') }}">
       <div class="form-group">
         @csrf
-        <label for="nome">Nome:</label>/
+        <label for="nome">Nome:</label>
         <input type="text" class="form-control" id="nome" name="nome" />
       </div>
       <div class="form-group">

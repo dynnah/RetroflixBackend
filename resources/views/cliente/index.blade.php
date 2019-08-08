@@ -40,5 +40,5 @@
     @endforeach
   </tbody>
 </table>
-<a href="{{ route('cliente.create') }}" class="btn btn-primary" role="button">Add Movie</a>
+<a href="{{ route('cliente.create') }}" class="btn btn-primary" role="button">Add Client</a>
 @endsection

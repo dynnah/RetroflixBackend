@@ -1,23 +1,23 @@
 @extends('filme.layout')
 
-@section('title', 'Edit Filmes')
+@section('title', 'Edit Filme')
 
 @section('content')
 <div class="card">
   <div class="card-header">
-    Edit Movies
+    Edit Animal
   </div>
   <div class="card-body">
     @if ($errors->any())
     <div class="alert alert-danger">
       <ul>
         @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+        <li></li>
         @endforeach
       </ul>
     </div>
     @endif
-    <form method="post" action="{{ route('filme.update', $filmes->id)}}">
+    <form method="post" action="{{ route('filme.update', $filme->id)}}">
       <div class="form-group">
         @csrf
         @method('PATCH')
