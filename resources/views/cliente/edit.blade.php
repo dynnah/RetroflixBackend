@@ -1,11 +1,11 @@
-@extends('filme.layout')
+@extends('cliente.layout')
 
-@section('title', 'Edit Filmes')
+@section('title', 'Edit Clientes')
 
 @section('content')
 <div class="card">
   <div class="card-header">
-    Edit Movies
+    Edit Client
   </div>
   <div class="card-body">
     @if ($errors->any())
@@ -17,22 +17,22 @@
       </ul>
     </div>
     @endif
-    <form method="post" action="{{ route('filme.update', $filme) }}">
+    <form method="post" action="{{ route('cliente.update', $cliente) }}">
       <div class="form-group">
         @csrf
         @method('PATCH')
-        <label for="titulo">Título:</label>
-        <input type="text" class="form-control" id="Titulo" name="Titulo" value="{{ $filme->titulo }}" />
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" value="{{ $cliente->nome }}" />
       </div>
       <div class="form-group">
-        <label for="data">Data de Lançamento:</label>
-        <input type="text" class="form-control" id="data" name="data" value="{{ $filme->data }}" />
+        <label for="cpf">CPF:</label>
+        <input type="text" class="form-control" id="cpf" name="cpf" value="{{ $cliente->cpf }}" />
       </div>
       <div class="form-group">
-        <label for="duracao">Duração:</label>
-        <input type="text" class="form-control" id="duracao" name="duracao" value="{{ $filme->duracao }}" />
+        <label for="endereco">Endereço:</label>
+        <input type="text" class="form-control" id="endereco" name="endereco" value="{{ $cliente->endereco }}" />
       </div>
-      <button type="submit" class="btn btn-primary">Update Movies</button>
+      <button type="submit" class="btn btn-primary">Update Client</button>
     </form>
   </div>
 </div>

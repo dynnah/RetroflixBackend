@@ -1,6 +1,6 @@
-@extends('filme.layout')
+@extends('cliente.layout')
 
-@section('title', 'Filmes')
+@section('title', 'Clientes')
 
 @section('content')
 @if(session()->get('success'))
@@ -15,22 +15,22 @@
   <thead>
     <tr>
       <td>Id</td>
-      <td>Título</td>
-      <td>Data de Lançamento</td>
-      <td>Duração</td>
+      <td>Nome</td>
+      <td>CPF</td>
+      <td>Endereço</td>
       <td colspan="2">Action</td>
     </tr>
   </thead>
   <tbody>
-    @foreach($filmes as $filme)
+    @foreach($clientes as $cliente)
     <tr>
-      <td>{{$filme->id}}</td>
-      <td>{{$filme->titulo}}</td>
-      <td>{{$filme->data}}</td>
-      <td>{{$filme->duracao}}</td>
-      <td><a href="{{ route('filme.edit', $filme->id) }}" class="btn btn-primary" role="button">Edit</a></td>
+      <td>{{$cliente->id}}</td>
+      <td>{{$cliente->nome}}</td>
+      <td>{{$cliente->cpf}}</td>
+      <td>{{$cliente->endereco}}</td>
+      <td><a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-primary" role="button">Edit</a></td>
       <td>
-        <form action="{{ route('filme.destroy', $filme->id)}}" method="post">
+        <form action="{{ route('cliente.destroy', $cliente->id)}}" method="post">
           @csrf
           @method('DELETE')
           <button class="btn btn-danger" type="submit">Delete</button>
@@ -40,5 +40,5 @@
     @endforeach
   </tbody>
 </table>
-<a href="{{ route('filme.create') }}" class="btn btn-primary" role="button">Add Movie</a>
+<a href="{{ route('cliente.create') }}" class="btn btn-primary" role="button">Add Movie</a>
 @endsection
