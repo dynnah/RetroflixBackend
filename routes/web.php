@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('filme', 'FilmeController');
+Route::resource('cliente', 'ClienteController');
+
