@@ -53,13 +53,12 @@ class FilmeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Filme  $filmes
+     * @param  \App\Filme  $filme
      * @return \Illuminate\Http\Response
      */
-    public function edit(Filme $filmes)
+    public function edit(Filme $filme)
     {
-        $filmes = Filme::findOrFail($filmes->id);
-        return view('filme.edit', compact('filmes'));
+        return view('filme.edit', compact('filme'));
     }
     /**
      * Update the specified resource in storage.

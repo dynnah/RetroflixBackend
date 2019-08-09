@@ -12,4 +12,9 @@ class Cliente extends Model
         'cpf',
         'endereco'
     ];
+
+    public function pedidos()
+    {
+        return $this->hasMany('App\Pedido');
+    }
 }

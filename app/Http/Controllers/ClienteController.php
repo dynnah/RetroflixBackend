@@ -53,13 +53,12 @@ class ClienteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Cliente  $clientes
+     * @param  \App\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $clientes)
+    public function edit(Cliente $cliente)
     {
-        $clientes = Cliente::findOrFail($clientes->id);
-        return view('cliente.edit', compact('clientes'));
+        return view('cliente.edit', compact('cliente'));
     }
     /**
      * Update the specified resource in storage.

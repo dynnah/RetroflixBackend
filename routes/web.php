@@ -17,6 +17,6 @@ Route::get('/', function () {
 
 Route::resource('filme', 'FilmeController');
 Route::resource('cliente', 'ClienteController');
-Route::resource('cliente.filme', 'PedidoController');
+Route::resource('cliente.pedido', 'PedidoController');
 
 
