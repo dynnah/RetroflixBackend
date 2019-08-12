@@ -67,14 +67,15 @@ class FilmeController extends Controller
      * @param  \App\Filme  $filmes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Filme $filmes)
+    public function update(Request $request, Filme $filme)
     {
         $validatedData = $request->validate([
-                'titulo' => 'required|max:255',
-                'data' => 'required|max:15',
-                'duracao' => 'required|max:30',
-        ]);
-        Filme::whereId($filmes->id)->update($validatedData);
+            'titulo' => 'required|max:255',
+            'data' => 'required|max:15',
+            'duracao' => 'required|max:30',
+            ]);
+            
+        $filme->update($validatedData);
         return redirect(route('filme.index'))->with('success', 'Movie is successfully saved');
     }
     /**

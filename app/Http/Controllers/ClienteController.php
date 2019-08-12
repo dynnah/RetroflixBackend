@@ -67,14 +67,15 @@ class ClienteController extends Controller
      * @param  \App\Cliente  $clientes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Cliente $clientes)
+    public function update(Request $request, Cliente $cliente)
     {
         $validatedData = $request->validate([
                 'nome' => 'required|max:255',
                 'cpf' => 'required|max:15',
                 'endereco' => 'required|max:50',
         ]);
-        Cliente::whereId($clientes->id)->update($validatedData);
+
+        $cliente->update($validatedData);
         return redirect(route('cliente.index'))->with('success', 'Client is successfully saved');
     }
     /**

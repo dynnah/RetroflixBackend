@@ -22,7 +22,7 @@
         @csrf
         @method('PATCH')
         <label for="titulo">Título:</label>
-        <input type="text" class="form-control" id="Titulo" name="Titulo" value="{{ $filme->titulo }}" />
+        <input type="text" class="form-control" id="titulo" name="titulo" value="{{ $filme->titulo }}" />
       </div>
       <div class="form-group">
         <label for="data">Data de Lançamento:</label>
