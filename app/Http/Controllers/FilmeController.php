@@ -84,10 +84,10 @@ class FilmeController extends Controller
      * @param  \App\Filme  $filmes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Filme $filmes)
+    public function destroy(Filme $filme)
     {
-        $filmes = Filme::findOrFail($filmes->id);
-        $filmes->delete();
+        $filme = Filme::findOrFail($filme->id);
+        $filme->delete();
         return redirect(route('filme.index'))->with('success', 'Movie is successfully deleted');
     }
 }
