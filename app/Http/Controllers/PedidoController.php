@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Pedido;
+use App\Cliente;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -11,9 +12,9 @@ class PedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($cliente_id)
     {
-        $pedido = Pedido::all();
+        $pedido = Cliente::find($cliente_id)->pedidos()->get();;
         return view('pedido.index', compact('pedido'));
     }
 
@@ -33,7 +34,7 @@ class PedidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // $validatedData = $request->validate([
         //     'data' => 'required|max:255',
@@ -45,7 +46,7 @@ class PedidoController extends Controller
 
          
         //dd($request);
-        $pedidos = Pedido::findOrFail($id);
+        $cliente = Cliente::findOrFail($id);
         $validatedData = $request->validate([
             'data' => 'required|max:255',
             'valor' => 'required|max:15'
@@ -58,10 +59,8 @@ class PedidoController extends Controller
         $pedido->data = $request->input('data');
         $pedido->valor = $request->input('valor');
         $pedido->save();
-        // dd($animal);
-        $pedido->cliente->push($cliente);
-        //dd ($pessoa->animais);
-        $pedido->save();
+        $cliente->pedidos->push($pedido);
+        $cliente->save();
         //Pessoa::whereId($pessoa->id)->update($validatedData);
         return redirect(route('cliente.index'))->with('success', 'is successfully saved');
     }
@@ -83,8 +82,9 @@ class PedidoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Pedido $pedido)
     {
+        $pedido = Pedido::findOrFail($pedido->id);
         return view('pedido.edit', compact('pedido'));
     }
 

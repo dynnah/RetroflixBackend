@@ -11,6 +11,9 @@
   </button>
 </div><br />
 @endif
+<table>
+<td><a href="{{ route('cliente.index') }}" class="btn btn-primary" role="button">Back</a></td>
+</table>
 <table class="table table-striped">
   <thead>
     <tr>
