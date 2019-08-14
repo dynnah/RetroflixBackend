@@ -1,4 +1,4 @@
-@extends('pedido.layout')
+@extends('layouts.app')
 
 @section('title', 'Pedidos')
 
@@ -29,9 +29,9 @@
       <td>{{$pedido->id}}</td>
       <td>{{$pedido->data}}</td>
       <td>{{$pedido->valor}}</td>
-      <td><a href="" class="btn btn-primary" role="button">Edit</a></td>
+      <td><a href="{{ route('cliente.pedido.edit', [$pedido->cliente_id, $pedido->id]) }}" class="btn btn-primary" role="button">Edit</a></td>
       <td>
-        <form action="" method="post">
+        <form action="{{ route('cliente.pedido.destroy', [$pedido->cliente_id, $pedido->id])}}" method="post">
           @csrf
           @method('DELETE')
           <button class="btn btn-danger" type="submit">Delete</button>
@@ -41,5 +41,5 @@
     @endforeach
   </tbody>
 </table>
-<a href="" class="btn btn-primary" role="button">Add Order</a>
+<a href="{{ route('cliente.pedido.create', $pedido->cliente_id) }}" class="btn btn-primary" role="button">Add Order</a>
 @endsection

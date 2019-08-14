@@ -1,11 +1,11 @@
-@extends('cliente.layout')
+@extends('layouts.app')
 
 @section('title', 'Clientes')
 
 @section('content')
 @if(session()->get('success'))
 <div class="alert alert-success">
-  {{ session()->get('success') }}
+ 
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>

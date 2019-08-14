@@ -23,9 +23,10 @@ class PedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('pedido.create');
+        $cliente = Cliente::findOrFail($id);
+        return view('pedido.create' , compact('cliente'));
     }
 
     /**
@@ -79,43 +80,46 @@ class PedidoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Pedido  $pedido
+     * 
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pedido $pedido)
+    public function edit($cliente_id, Pedido $pedido)
     {
-        $pedido = Pedido::findOrFail($pedido->id);
-        return view('pedido.edit', compact('pedido'));
+        return view('pedido.edit', compact('cliente_id', 'pedido'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($cliente_id, Request $request, Pedido $pedido)
     {
         $validatedData = $request->validate([
             'data' => 'required|max:255',
             'valor' => 'required|max:15',
         ]);
         // dd($validatedData);
-        Pedido::update($validatedData);
-        return redirect(route('cliente.pedido.index'))->with('success', 'Order is successfully saved');
+        //Pedido::update($validatedData);
+        $pedido->data = $request->input('data');
+        $pedido->valor = $request->input('valor');
+        $pedido->save();
+        return redirect(route('cliente.pedido.index', $cliente_id))->with('success', 'Order is successfully saved');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Pedido  $pedido
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($cliente_id, Pedido $pedido)
     {
-        $pedido = Pedido::findOrFail($pedido->id);
+        // $pedido = Pedido::findOrFail($pedido->id);
         $pedido->delete();
-        return redirect(route('cliente.pedido.index'))->with('success', 'Order is successfully deleted');
+        return redirect(route('cliente.pedido.index', $cliente_id))->with('success', 'Order is successfully deleted');
     }
 }

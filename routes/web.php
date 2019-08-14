@@ -11,8 +11,10 @@
 |
 */
 
+Auth::routes();
+
 Route::get('/', function () {
-    return redirect(route('cliente.index'));;
+    return redirect(route('home'));;
 });
 
 Route::resource('filme', 'FilmeController');
@@ -20,3 +22,4 @@ Route::resource('cliente', 'ClienteController');
 Route::resource('cliente.pedido', 'PedidoController');
 
 
+Route::get('/home', 'HomeController@index')->name('home');

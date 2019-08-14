@@ -1,4 +1,4 @@
-@extends('order.layout')
+@extends('pedido.layout')
 
 @section('title', 'Edit Order')
 
@@ -17,16 +17,16 @@
       </ul>
     </div>
     @endif
-    <form method="post" action="{{ route('cliente.pedido.update', $cliente->id)}}">
+    <form method="post" action="{{ route('cliente.pedido.update', [$pedido->cliente_id, $pedido])}}">
       <div class="form-group">
         @csrf
         @method('PATCH')
         <label for="data">Data do Pedido:</label>
-        <input type="text" class="form-control" id="data" name="data" value="{{ $cliente->data }}" />
+        <input type="text" class="form-control" id="data" name="data" value="{{ $pedido->data }}" />
       </div>
       <div class="form-group">
         <label for="data">Valor:</label>
-        <input type="text" class="form-control" id="valor" name="valor" value="{{ $cliente->valor }}" />
+        <input type="text" class="form-control" id="valor" name="valor" value="{{ $pedido->valor }}" />
       </div>
       <button type="submit" class="btn btn-primary">Update Order</button>
     </form>
