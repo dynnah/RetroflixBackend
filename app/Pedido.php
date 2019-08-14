@@ -16,4 +16,10 @@ class Pedido extends Model
     {
         return $this->belongsTo('App\Cliente');
     }
+
+    public function filme()
+    {
+        return $this->hasMany('App\Filme');
+    }
+
 }

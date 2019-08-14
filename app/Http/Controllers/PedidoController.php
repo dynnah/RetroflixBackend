@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Pedido;
 use Illuminate\Http\Request;
 
 class PedidoController extends Controller
@@ -11,9 +11,10 @@ class PedidoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($cliente_id)
+    public function index()
     {
-        //
+        $pedido = Pedido::all();
+        return view('pedido.index', compact('pedido'));
     }
 
     /**
@@ -23,7 +24,7 @@ class PedidoController extends Controller
      */
     public function create()
     {
-        //
+        return view('pedido.create');
     }
 
     /**
@@ -34,7 +35,35 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $validatedData = $request->validate([
+        //     'data' => 'required|max:255',
+        //     'valor' => 'required|max:15',
+        // ]);
+        // // dd($validatedData);
+        // Pedido::create($validatedData);
+        // return redirect(route('cliente.pedido.index'))->with('success', 'Order is successfully saved');
+
+         
+        //dd($request);
+        $pedidos = Pedido::findOrFail($id);
+        $validatedData = $request->validate([
+            'data' => 'required|max:255',
+            'valor' => 'required|max:15'
+        ]);
+        
+        $pedido = new Pedido;
+        
+        //$pedido = $validatedData;
+        $pedido->cliente_id = $id;
+        $pedido->data = $request->input('data');
+        $pedido->valor = $request->input('valor');
+        $pedido->save();
+        // dd($animal);
+        $pedido->cliente->push($cliente);
+        //dd ($pessoa->animais);
+        $pedido->save();
+        //Pessoa::whereId($pessoa->id)->update($validatedData);
+        return redirect(route('cliente.index'))->with('success', 'is successfully saved');
     }
 
     /**
@@ -56,7 +85,7 @@ class PedidoController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pedido.edit', compact('pedido'));
     }
 
     /**
@@ -68,7 +97,13 @@ class PedidoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'data' => 'required|max:255',
+            'valor' => 'required|max:15',
+        ]);
+        // dd($validatedData);
+        Pedido::update($validatedData);
+        return redirect(route('cliente.pedido.index'))->with('success', 'Order is successfully saved');
     }
 
     /**
@@ -79,6 +114,8 @@ class PedidoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pedido = Pedido::findOrFail($pedido->id);
+        $pedido->delete();
+        return redirect(route('cliente.pedido.index'))->with('success', 'Order is successfully deleted');
     }
 }

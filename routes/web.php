@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return redirect(route('filme.index'));;
+    return redirect(route('cliente.index'));;
 });
 
 Route::resource('filme', 'FilmeController');

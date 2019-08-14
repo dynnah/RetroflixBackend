@@ -13,5 +13,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(FilmeTableSeeder::class);
         $this->call(ClienteTableSeeder::class);
+        $this->call(PedidoTableSeeder::class);
     }
 }

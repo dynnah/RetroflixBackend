@@ -28,6 +28,7 @@
       <td>{{$cliente->nome}}</td>
       <td>{{$cliente->cpf}}</td>
       <td>{{$cliente->endereco}}</td>
+      <td><a href="{{ route('cliente.pedido.index', $cliente->id) }}" class="btn btn-primary" role="button">Show Order</a></td>
       <td><a href="{{ route('cliente.edit', $cliente->id) }}" class="btn btn-primary" role="button">Edit</a></td>
       <td>
         <form action="{{ route('cliente.destroy', $cliente->id)}}" method="post">

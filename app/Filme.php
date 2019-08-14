@@ -12,4 +12,9 @@ class Filme extends Model
         'data',
         'duracao'
     ];
+
+    public function pedidos()
+    {
+        return $this->belongsTo('App\Pedido');
+    }
 }
