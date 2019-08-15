@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('pedido.layout')
 
 @section('title', 'Create Order')
 

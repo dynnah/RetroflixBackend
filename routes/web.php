@@ -20,6 +20,7 @@ Route::get('/', function () {
 Route::resource('filme', 'FilmeController');
 Route::resource('cliente', 'ClienteController');
 Route::resource('cliente.pedido', 'PedidoController');
+// Route::resource('pedido.filme', 'FilmeController');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

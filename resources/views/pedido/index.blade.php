@@ -41,5 +41,4 @@
     @endforeach
   </tbody>
 </table>
-<a href="{{ route('cliente.pedido.create', $pedido->cliente_id) }}" class="btn btn-primary" role="button">Add Order</a>
 @endsection

@@ -15,6 +15,12 @@ class CreateFilmeTable extends Migration
     {
         Schema::create('filmes', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // $table->string('titulo');
+            // $table->string('data');
+            // $table->string('duracao');
+            // $table->unsignedBigInteger('pedido_id');
+            // $table->foreign('pedido_id')->references('id')->on('pedido');
+            // $table->timestamps();
             $table->string('titulo');
             $table->string('data');
             $table->string('duracao');

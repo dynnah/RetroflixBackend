@@ -13,18 +13,21 @@ class FilmeTableSeeder extends Seeder
     public function run()
     {
         $filmes = new Filme;
+        // $filmes->pedido_id = '1';
         $filmes->titulo = 'Bonequinha de Luxo';
         $filmes->data = '13/11/1961';
         $filmes->duracao = '115 minutos';
         $filmes->save();
 
         $filmes = new Filme;
+        // $filmes->pedido_id = '2';
         $filmes->titulo = 'E o vento levou';
         $filmes->data = '01/01/1940';
         $filmes->duracao = '238 minutos';
         $filmes->save();
 
         $filmes = new Filme;
+        // $filmes->pedido_id = '3';
         $filmes->titulo = 'Cantando na chuva';
         $filmes->data = '30/06/1952';
         $filmes->duracao = '103 minutos';
