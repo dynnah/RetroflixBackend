@@ -11,6 +11,12 @@
 <h3 align="center">
   Retroflix
 </h3>
+<p align="center">
+   <a href="https://github.com/dynnah">
+      <img alt="Made by Dynnah Hanna" src="https://img.shields.io/badge/Made%20by-Dynnah%20Hanna-lightpink">
+   </a>
+</p>
+
 
 ---
 ## :notebook: About 
